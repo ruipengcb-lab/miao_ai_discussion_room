@@ -1,0 +1,65 @@
+{
+  "name": "miao-ai-discussion",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.294.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron electron/main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  },
+  "build": {
+    "appId": "com.miao.ai-discussion",
+    "productName": "喵酱 AI 讨论室",
+    "icon": "../../icon.ico",
+    "files": [
+      "build/**/*",
+      "electron/**/*"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "extraResources": [
+      {
+        "from": "../dist/miao-backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "build",
+        "to": "frontend/build",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "../../icon.ico"
+    },
+    "portable": {
+      "artifactName": "喵酱AI讨论室-${version}-portable.exe"
+    }
+  }
+}

@@ -2,7 +2,11 @@
 setlocal
 cd /d "%~dp0"
 
-set PYTHON=C:\Users\ruipe\AppData\Local\Python\pythoncore-3.14-64\python.exe
+if exist "%~dp0.venv\Scripts\python.exe" (
+  set "PYTHON=%~dp0.venv\Scripts\python.exe"
+) else (
+  set "PYTHON=python"
+)
 
 "%PYTHON%" -m PyInstaller ^
   --noconfirm ^
